@@ -76,3 +76,27 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `user` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phone` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `avatar` varchar(100) DEFAULT NULL,
+  `create_at` timestamp NOT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_email_IDX` (`email`,`username`,`id`) USING BTREE
+) ;
+
+
+
+LOCK TABLES `user` WRITE;
+
+INSERT INTO `user` VALUES (1,'dinhan','dinhan@gmail.com','ha nội','098838333','121314',NULL,'2022-08-07 05:29:20',NULL,NULL),(2,'andinh','an12334','hanoi','0977665','235655',NULL,'2022-08-07 05:29:20',NULL,NULL);
+
+UNLOCK TABLES;
+
