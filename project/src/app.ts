@@ -2,7 +2,8 @@ import path from 'path';
 import express, { Express, Request, Response } from 'express';
 import { engine } from 'express-handlebars';
 import dotenv from 'dotenv';
-import { router } from './routers/index';
+import { router } from './routers/index.router';
+import "reflect-metadata";
 
 
 import { Connect } from './config/db/mysql';
@@ -13,6 +14,9 @@ Connect()
 
 const app: Express = express();
 const port = process.env.PORT;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //Satic file 
 app.use(express.static(path.join('./src/public')));
